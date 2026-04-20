@@ -86,7 +86,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull the image from GitHub Container Registry
-        run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+        run: docker pull ghcr.io/${{ github.repository }}.tolower():${{ github.sha }}
 
       - name: Run the image
         run: docker run -rm ghcr.io/${{ github.repository }}:${{ github.sha }} | grep -i hello || exit 1
